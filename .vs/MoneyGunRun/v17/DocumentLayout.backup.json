@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\furop\\MoneyGunRun\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|c:\\users\\furop\\moneygunrun\\assets\\scripts\\player\\playershooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playershooter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|c:\\users\\furop\\moneygunrun\\assets\\scripts\\core\\sfxgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\sfxgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|C:\\Users\\furop\\MoneyGunRun\\assets\\scripts\\core\\gate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|C:\\Users\\furop\\MoneyGunRun\\assets\\scripts\\core\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|C:\\Users\\furop\\MoneyGunRun\\assets\\scripts\\core\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|C:\\Users\\furop\\MoneyGunRun\\assets\\scripts\\core\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|C:\\Users\\furop\\MoneyGunRun\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4EC8BF1-6155-5EE6-69ED-100FF7E3981B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SfxGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\SfxGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\SfxGenerator.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\SfxGenerator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\SfxGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T12:16:31.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gate.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\Gate.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\Gate.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\Gate.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\Gate.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T12:07:06.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerShooter.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Player\\PlayerShooter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerShooter.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Player\\PlayerShooter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerShooter.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwC0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:25:55.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\ObjectPool.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\ObjectPool.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:24:57.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\Bullet.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\Bullet.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\Bullet.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\Bullet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:23:44.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:06:45.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\InputManager.cs",
+              "ToolTip": "C:\\Users\\furop\\MoneyGunRun\\Assets\\Scripts\\Core\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:05:44.008Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
