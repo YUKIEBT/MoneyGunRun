@@ -3,8 +3,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int maxHealth = 10; // ƒuƒƒbƒN‚Ì‘Ì—Í
-    [SerializeField] private GameObject dieEffect; // €‚ñ‚¾‚ÌƒGƒtƒFƒNƒgiŒã‚Å’Ç‰Áj
+    [SerializeField] private int maxHealth = 3; // ãƒ–ãƒ­ãƒƒã‚¯ã®ä½“åŠ›
+    [SerializeField] private int moneyReward = 1; // â˜…è¿½åŠ ï¼šå€’ã—ãŸæ™‚ã«ã‚‚ã‚‰ãˆã‚‹ãŠé‡‘
 
     private int _currentHealth;
     private Vector3 _initialScale;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
         _currentHealth -= damage;
 
-        // y‰‰ozŒ‚‚½‚ê‚é‚½‚Ñ‚É­‚µk‚¦‚éEk‚ŞiƒqƒbƒgŠ´‚Ì‰‰oj
+        // æ’ƒãŸã‚Œã‚‹ãŸã³ã«å°‘ã—éœ‡ãˆã‚‹ãƒ»ç¸®ã‚€
         transform.localScale = _initialScale * 0.9f;
         Invoke(nameof(ResetScale), 0.05f);
 
@@ -36,10 +36,13 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // ‚±‚±‚Å‚¨‹àiƒXƒRƒAj‚ğ‰ÁZ‚·‚éˆ—‚ğŒã‚Å“ü‚ê‚Ü‚·
-        Debug.Log("Money +10!");
+        // â˜…è¿½åŠ ï¼šGameManagerãŒå­˜åœ¨ã™ã‚Œã°ã€ãŠé‡‘ã‚’åŠ ç®—ã™ã‚‹ï¼
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddMoney(moneyReward);
+        }
 
-        // ”j‰óIiÁ–Åj
+        // ç ´å£Šï¼ï¼ˆæ¶ˆæ»…ï¼‰
         Destroy(gameObject);
     }
 }

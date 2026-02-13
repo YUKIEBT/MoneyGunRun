@@ -1,44 +1,47 @@
 using UnityEngine;
 
-// Ó–±: ƒLƒƒƒ‰ƒNƒ^[‚ğ‘–‚ç‚¹‚éA¶‰E‚É“®‚©‚·
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float forwardSpeed = 10f;  // ‘OiƒXƒs[ƒh
-    [SerializeField] private float swerveSpeed = 30f;   // ¶‰EˆÚ“®‚Ì•qŠ´‚³
-    [SerializeField] private float maxX = 4.5f;         // “¹˜H‚Ì‰E’[§ŒÀ
-    [SerializeField] private float minX = -4.5f;        // “¹˜H‚Ì¶’[§ŒÀ
+    [SerializeField] private float forwardSpeed = 5f;  // å‰é€²ã‚¹ãƒ”ãƒ¼ãƒ‰
+    [SerializeField] private float swerveSpeed = 30f;  // å·¦å³ç§»å‹•ã®æ•æ„Ÿã•
+    [SerializeField] private float maxX = 4.5f;
+    [SerializeField] private float minX = -4.5f;
 
     private void Update()
     {
+        // ã‚²ãƒ¼ãƒ ä¸­ã®ã¿å‹•ãï¼ˆå¾…æ©Ÿä¸­ã‚„ã‚¯ãƒªã‚¢å¾Œã¯æ­¢ã¾ã‚‹ï¼‰
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
         MoveForward();
         HandleSwerve();
     }
 
     private void MoveForward()
     {
-        // í‚ÉZ²ƒvƒ‰ƒX•ûŒüi‰œj‚Öi‚Ş
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
     }
 
     private void HandleSwerve()
     {
-        // InputManager‚ª‚È‚¢ê‡‚Í‰½‚à‚µ‚È‚¢iƒGƒ‰[–h~j
         if (InputManager.Instance == null) return;
 
-        // “ü—Í’l‚ğæ“¾
         float swerveAmount = InputManager.Instance.GetSwerveAmount();
-
-        // Œ»İ‚ÌˆÊ’u‚ğæ“¾
         Vector3 currentPos = transform.position;
-
-        // V‚µ‚¢XÀ•W‚ğŒvZ (Œ»İ‚ÌX + ˆÚ“®—Ê)
         float newX = currentPos.x + (swerveAmount * swerveSpeed);
-
-        // “¹˜H‚©‚ç‚Í‚İo‚³‚È‚¢‚æ‚¤‚ÉClampi’l‚ğ§ŒÀj
         newX = Mathf.Clamp(newX, minX, maxX);
 
-        // ˆÊ’u‚ğXV (Y‚ÆZ‚Í‚»‚Ì‚Ü‚ÜAX‚¾‚¯•Ï‚¦‚é)
         transform.position = new Vector3(newX, currentPos.y, currentPos.z);
+    }
+
+    // â˜…è¿½åŠ : ã‚´ãƒ¼ãƒ«åˆ¤å®šï¼ˆä½•ã‹ã«ã¶ã¤ã‹ã£ãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹ï¼‰
+    private void OnTriggerEnter(Collider other)
+    {
+        // ã¶ã¤ã‹ã£ãŸç›¸æ‰‹ãŒ "Finish" ã‚¿ã‚°ã‚’æŒã£ã¦ã„ãŸã‚‰
+        if (other.CompareTag("Finish"))
+        {
+            // GameManagerã«ã€Œã‚¯ãƒªã‚¢ï¼ã€ã¨å ±å‘Šã™ã‚‹
+            GameManager.Instance.LevelComplete();
+        }
     }
 }
