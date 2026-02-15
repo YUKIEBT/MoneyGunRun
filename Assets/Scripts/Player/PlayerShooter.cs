@@ -1,31 +1,39 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))] // ©“®‚ÅAudioSource‚ğ’Ç‰Á‚·‚é‚¨‚Ü‚¶‚È‚¢
+[RequireComponent(typeof(AudioSource))]
 public class PlayerShooter : MonoBehaviour
 {
     [Header("Shooting Stats")]
-    [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private float minFireRate = 0.05f;
+    [SerializeField] private float fireRate = 0.6f;
+    [SerializeField] private float minFireRate = 0.02f;
     [SerializeField] private Transform firePoint;
 
-    // ‰¹‚ğ–Â‚ç‚·‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg
     private AudioSource _audioSource;
     private float _timer;
 
     private void Start()
     {
-        // ©•ª‚ÌAudioSource‚ğæ“¾
         _audioSource = GetComponent<AudioSource>();
-
-        // ‰¹Š„‚ê–h~‚Ì‚½‚ß‚É­‚µ‰¹—Ê‚ğ‰º‚°‚é
-        _audioSource.volume = 0.5f;
-
-        // d‚È‚ç‚È‚¢‚æ‚¤‚Éƒsƒbƒ`i‰¹’öj‚ğ­‚µƒ‰ƒ“ƒ_ƒ€‚É‚·‚éİ’è
+        _audioSource.volume = 0.5f; 
         _audioSource.pitch = 1.0f;
+
+        // â˜…è¿½åŠ ï¼šGameManagerã‹ã‚‰ãƒ¬ãƒ™ãƒ«ã‚’èª­ã¿å–ã‚Šã€åˆæœŸã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’ä¸Šã’ã‚‹
+        if (GameManager.Instance != null)
+        {
+            // ãƒ¬ãƒ™ãƒ«1ãªã‚‰ãƒœãƒ¼ãƒŠã‚¹0ã€‚ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã‚‹ã”ã¨ã«0.05ç§’é€Ÿããªã‚‹
+            float upgradeBonus = (GameManager.Instance.FireRateLevel - 1) * 0.05f;
+            fireRate -= upgradeBonus;
+            
+            // é™ç•Œå€¤ã‚ˆã‚Šé€Ÿããªã‚‰ãªã„ã‚ˆã†ã«åˆ¶é™
+            if (fireRate < minFireRate) fireRate = minFireRate;
+        }
     }
 
     private void Update()
     {
+        // â˜…ä¿®æ­£ï¼šã‚²ãƒ¼ãƒ ä¸­ä»¥å¤–ï¼ˆã‚¹ã‚¿ãƒ¼ãƒˆå‰ã‚„ã‚¯ãƒªã‚¢å¾Œï¼‰ã¯æ’ƒãŸãªã„ã‚ˆã†ã«ã™ã‚‹
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Playing) return;
+
         _timer += Time.deltaTime;
 
         if (_timer >= fireRate)
@@ -42,16 +50,13 @@ public class PlayerShooter : MonoBehaviour
         Vector3 spawnPos = firePoint ? firePoint.position : transform.position;
         ObjectPool.Instance.GetBullet(spawnPos, transform.rotation);
 
-        // š‚±‚±‚Å‰¹‚ğ–Â‚ç‚·
         PlayShootSound();
     }
 
     private void PlayShootSound()
     {
-        // SfxGenerator‚ª‘¶İ‚µAAudioClip‚ª¶¬‚³‚ê‚Ä‚¢‚ê‚Î–Â‚ç‚·
         if (SfxGenerator.Instance != null && SfxGenerator.Instance.ShootClip != null)
         {
-            // PlayOneShot‚Íu‘O‚Ì‰¹‚ªI‚í‚é‚Ì‚ğ‘Ò‚½‚¸‚Évd‚Ë‚ÄÄ¶‚Å‚«‚éi˜AË‚É•K{j
             _audioSource.PlayOneShot(SfxGenerator.Instance.ShootClip);
         }
     }

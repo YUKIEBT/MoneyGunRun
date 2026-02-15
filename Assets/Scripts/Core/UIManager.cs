@@ -1,6 +1,5 @@
 using UnityEngine;
-using TMPro; // 文字表示に必須
-using UnityEngine.UI; // ボタンなどに必要
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +13,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelCompletePanel;
     [SerializeField] private GameObject gameOverPanel;
 
+    // ★追加：ショップUI用のパーツ
+    [Header("Shop UI")]
+    [SerializeField] private TextMeshProUGUI fireRateLevelText;
+    [SerializeField] private TextMeshProUGUI fireRateCostText;
+    [SerializeField] private TextMeshProUGUI incomeLevelText;
+    [SerializeField] private TextMeshProUGUI incomeCostText;
+
+    private int baseFireRateCost = 10; // 連射強化の基本価格
+    private int baseIncomeCost = 10;   // 収入強化の基本価格
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -21,27 +30,21 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // 初期状態のUIセットアップ
-        UpdateMoneyText(0);
         ShowPanel(startPanel);
+        UpdateShopUI(); // ★追加：スタート画面が出たらショップの値段を計算して表示
     }
 
     public void UpdateMoneyText(int amount)
     {
-        if (moneyText != null)
-        {
-            moneyText.text = $"$ {amount}";
-        }
+        if (moneyText != null) moneyText.text = $"$ {amount}";
     }
 
-    // ゲーム開始ボタンから呼ばれる
     public void OnTapToStart()
     {
         GameManager.Instance.StartGame();
-        startPanel.SetActive(false); // スタート画面を隠す
+        ShowPanel(null); // 全部隠す
     }
 
-    // リトライ/ネクストボタンから呼ばれる
     public void OnRestartButton()
     {
         GameManager.Instance.RestartLevel();
@@ -59,12 +62,48 @@ public class UIManager : MonoBehaviour
 
     private void ShowPanel(GameObject panelToShow)
     {
-        // 全パネルを一旦隠す
-        startPanel.SetActive(false);
-        levelCompletePanel.SetActive(false);
-        gameOverPanel.SetActive(false);
+        if (startPanel != null) startPanel.SetActive(false);
+        if (levelCompletePanel != null) levelCompletePanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
 
-        // 指定されたものだけ出す
         if (panelToShow != null) panelToShow.SetActive(true);
+    }
+
+    // ==========================================
+    // ★追加：ここから下がショップ（お買い物）の処理
+    // ==========================================
+    public void UpdateShopUI()
+    {
+        if (GameManager.Instance == null) return;
+
+        int fireRateLv = GameManager.Instance.FireRateLevel;
+        int incomeLv = GameManager.Instance.IncomeLevel;
+
+        // レベルと値段のテキストを更新（例: レベル2なら値段は20ドル）
+        if (fireRateLevelText != null) fireRateLevelText.text = $"Fire Rate Lv.{fireRateLv}";
+        if (fireRateCostText != null) fireRateCostText.text = $"$ {fireRateLv * baseFireRateCost}";
+
+        if (incomeLevelText != null) incomeLevelText.text = $"Income Lv.{incomeLv}";
+        if (incomeCostText != null) incomeCostText.text = $"$ {incomeLv * baseIncomeCost}";
+    }
+
+    public void OnBuyFireRate()
+    {
+        int cost = GameManager.Instance.FireRateLevel * baseFireRateCost;
+        if (GameManager.Instance.TryPurchase(cost)) // お金が足りるかチェック！
+        {
+            GameManager.Instance.UpgradeFireRate(); // レベルアップ！
+            UpdateShopUI(); // 表示を更新
+        }
+    }
+
+    public void OnBuyIncome()
+    {
+        int cost = GameManager.Instance.IncomeLevel * baseIncomeCost;
+        if (GameManager.Instance.TryPurchase(cost))
+        {
+            GameManager.Instance.UpgradeIncome();
+            UpdateShopUI();
+        }
     }
 }
