@@ -7,11 +7,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float swerveSpeed = 30f;
     [SerializeField] private float maxX = 4.5f;
     [SerializeField] private float minX = -4.5f;
+    // ★追加: アニメーターを操作するための変数
+    [SerializeField] private Animator characterAnimator;
 
     private void Update()
     {
-        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+        if (GameManager.Instance.CurrentState != GameState.Playing)
+        {
+            // ★追加: 走るのをやめる（Idleに戻る）
+            if (characterAnimator != null) characterAnimator.SetBool("isRunning", false);
+            return;
+        }
 
+        // ゲーム中（Playing）の時
+        // ★追加: 走るアニメーションをオンにする！
+        if (characterAnimator != null) characterAnimator.SetBool("isRunning", true);
         MoveForward();
         HandleSwerve();
     }
