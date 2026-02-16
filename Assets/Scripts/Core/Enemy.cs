@@ -3,8 +3,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int maxHealth = 3; // ブロックの体力
-    [SerializeField] private int moneyReward = 1; // ★追加：倒した時にもらえるお金
+    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int moneyReward = 1;
+
+    // ★追加：爆発エフェクトを入れる箱
+    [Header("Effects")]
+    [SerializeField] private GameObject explosionPrefab;
 
     private int _currentHealth;
     private Vector3 _initialScale;
@@ -36,13 +40,23 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // ★追加：GameManagerが存在すれば、お金を加算する！
+        // お金を加算する
         if (GameManager.Instance != null)
         {
             GameManager.Instance.AddMoney(moneyReward);
         }
 
-        // 破壊！（消滅）
+        // ★追加：爆発エフェクトを出現させる！
+        if (explosionPrefab != null)
+        {
+            // 敵のいた場所にエフェクトをスポーンさせる
+            GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            
+            // 2秒後にエフェクトをゴミ箱へ捨てる（スマホが重くならないための必須テクニック！）
+            Destroy(fx, 2f);
+        }
+
+        // 敵自身は消滅！
         Destroy(gameObject);
     }
 }
