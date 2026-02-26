@@ -110,4 +110,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    // ★追加：ボタンを押した時に呼ばれるリセット処理
+    public void RestartGame()
+    {
+        // 今開いているシーンの名前を取得して、もう一度最初から読み込み直す
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
