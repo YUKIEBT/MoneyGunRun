@@ -129,6 +129,7 @@ MonoBehaviour:
   maxHealth: 3
   moneyReward: 1
   explosionPrefab: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
+  explosionSound: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
 --- !u!1001 &4352929634963939236
 PrefabInstance:
   m_ObjectHideFlags: 0

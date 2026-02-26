@@ -53,11 +53,12 @@ public class PlayerShooter : MonoBehaviour
         PlayShootSound();
     }
 
-    private void PlayShootSound()
+private void PlayShootSound()
     {
         if (SfxGenerator.Instance != null && SfxGenerator.Instance.ShootClip != null)
         {
-            _audioSource.PlayOneShot(SfxGenerator.Instance.ShootClip);
+            // ★変更：最後に「, 0.2f」を付け足して音量を20%に抑えます！
+            _audioSource.PlayOneShot(SfxGenerator.Instance.ShootClip, 0.4f);
         }
     }
 

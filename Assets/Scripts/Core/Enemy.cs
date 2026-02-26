@@ -6,9 +6,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int moneyReward = 1;
 
-    // ★追加：爆発エフェクトを入れる箱
     [Header("Effects")]
     [SerializeField] private GameObject explosionPrefab;
+    
+    // ↓ おそらく、この1行が抜けていた（または場所が違った）のが原因です！
+    [SerializeField] private AudioClip explosionSound;
 
     private int _currentHealth;
     private Vector3 _initialScale;
@@ -46,14 +48,18 @@ public class Enemy : MonoBehaviour
             GameManager.Instance.AddMoney(moneyReward);
         }
 
-        // ★追加：爆発エフェクトを出現させる！
+        // 爆発エフェクトを出現させる
         if (explosionPrefab != null)
         {
-            // 敵のいた場所にエフェクトをスポーンさせる
             GameObject fx = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            
-            // 2秒後にエフェクトをゴミ箱へ捨てる（スマホが重くならないための必須テクニック！）
             Destroy(fx, 2f);
+        }
+
+        // 爆発音を鳴らす
+        if (explosionSound != null)
+        {
+            // ★変更：カメラ（耳）の真ん前で鳴らす！ ついでに音量も50%（0.5f）に調整
+            AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position);
         }
 
         // 敵自身は消滅！
